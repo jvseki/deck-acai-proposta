@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mini demo — Deck Açaí</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Fraunces:wght@600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --teal: #0f3d37;
+      --mint: #1f5c52;
+      --foam: #e7f1ec;
+      --muted: #4d6760;
+      --line: #c9ddd4;
+      --acai: #5a2a6e;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "DM Sans", system-ui, sans-serif;
+      color: #102824;
+      background: linear-gradient(180deg, #dcece6, var(--foam));
+      padding: 14px;
+    }
+    .phone {
+      max-width: 380px;
+      margin: 0 auto;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 16px;
+      box-shadow: 0 16px 36px rgba(15, 61, 55, .14);
+      min-height: 560px;
+      display: flex;
+      flex-direction: column;
+    }
+    .caption {
+      background: #fff8e8;
+      border: 1px solid #f0d48a;
+      border-radius: 12px;
+      padding: 10px 12px;
+      font-size: 0.84rem;
+      color: #856404;
+      line-height: 1.4;
+      margin-bottom: 12px;
+    }
+    .caption strong {
+      color: var(--teal);
+      display: block;
+      margin-bottom: 2px;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    h1 {
+      font-family: Fraunces, Georgia, serif;
+      font-size: 1.45rem;
+      margin: 0 0 4px;
+      color: var(--teal);
+    }
+    .sub { color: var(--muted); font-size: 0.86rem; margin: 0 0 12px; }
+    .screen { flex: 1; }
+    .item {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 10px 0; border-bottom: 1px solid var(--line); font-size: 0.92rem;
+      gap: 8px;
+    }
+    .item small { color: var(--muted); }
+    .item button, .go, .navbtn {
+      border: 0; border-radius: 999px; cursor: pointer; font: inherit; font-weight: 700;
+    }
+    .item button {
+      background: var(--teal); color: #fff; padding: 0.4rem 0.75rem; font-size: 0.8rem;
+      white-space: nowrap;
+    }
+    .choice {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 8px 0 12px;
+    }
+    .choice button {
+      min-height: 48px; border-radius: 14px; border: 1px solid var(--line);
+      background: var(--foam); font-weight: 600; cursor: pointer;
+    }
+    .choice button.on { border-color: var(--teal); background: #d8ebe4; color: var(--teal); }
+    .go {
+      width: 100%; margin-top: 10px; min-height: 48px; background: var(--teal); color: #fff;
+    }
+    .nav { display: flex; gap: 8px; margin-top: 14px; }
+    .navbtn {
+      flex: 1; min-height: 42px; background: transparent; border: 1px solid var(--line); color: #102824;
+    }
+    .navbtn.primary { background: #c9a86a; border-color: #c9a86a; color: #102824; }
+    .ok { margin-top: 10px; color: var(--mint); font-weight: 600; font-size: 0.9rem; }
+    .wm { text-align: center; margin-top: 12px; font-size: 0.72rem; color: #8aa59c; letter-spacing: 0.08em; }
+    .badge {
+      display: inline-block; background: #e8f5e9; color: #1b5e20;
+      font-size: 0.75rem; font-weight: 700; padding: 0.2rem 0.55rem; border-radius: 999px;
+    }
+    .admin-row { padding: 8px 0; border-bottom: 1px solid var(--line); font-size: 0.88rem; }
+    .tag {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--acai);
+      background: #f3e8f8;
+      padding: 0.15rem 0.45rem;
+      border-radius: 999px;
+      margin-bottom: 6px;
+    }
+  </style>
+</head>
+<body>
+  <div class="phone">
+    <div class="caption" id="caption">
+      <strong>Legenda · Etapa 1</strong>
+      Cliente abre o cardápio no celular e adiciona o açaí ao carrinho.
+    </div>
+    <div class="screen" id="screen"></div>
+    <div class="nav">
+      <button class="navbtn" id="prev" type="button">← Voltar</button>
+      <button class="navbtn primary" id="next" type="button">Próximo →</button>
+    </div>
+    <p class="wm">JVSEKI · Deck Açaí</p>
+  </div>
+
+  <script>
+    const steps = [
+      {
+        title: "Cardápio",
+        caption: "Cliente abre o cardápio no celular, escolhe tamanho e adicionais — “açaí do seu jeito”.",
+        html: `
+          <span class="tag">Deck Açaí & Café</span>
+          <h1>Cardápio</h1>
+          <p class="sub">Aqui o seu açaí, é do seu jeito!</p>
+          <div class="item"><span>Açaí 500ml<br><small>R$ 22,00</small></span><button type="button" data-add>Adicionar</button></div>
+          <div class="item"><span>Açaí 700ml<br><small>R$ 28,00</small></span><button type="button" data-add>Adicionar</button></div>
+          <div class="item"><span>Barca Kids<br><small>R$ 32,00</small></span><button type="button" data-add>Adicionar</button></div>
+          <div class="item"><span>Café gelado<br><small>R$ 14,00</small></span><button type="button" data-add>Adicionar</button></div>
+          <p class="ok" id="msg">Carrinho: 0 itens</p>
+        `,
+        bind(root) {
+          let n = 0;
+          root.querySelectorAll("[data-add]").forEach(b => {
+            b.onclick = () => {
+              n += 1;
+              root.querySelector("#msg").textContent = `Carrinho: ${n} item(ns)`;
+            };
+          });
+        }
+      },
+      {
+        title: "Checkout",
+        caption: "Escolhe retirada no Deck (Av. Guanabara) ou delivery e informa telefone / endereço.",
+        html: `
+          <h1>Finalizar</h1>
+          <p class="sub">Como deseja receber?</p>
+          <div class="choice" id="tipo">
+            <button type="button" class="on">Retirada</button>
+            <button type="button">Delivery</button>
+          </div>
+          <p class="sub">Telefone: (18) 99755-7948</p>
+          <p class="ok" id="msg">Retirada na Av. Guanabara, 2219 — sem taxa.</p>
+        `,
+        bind(root) {
+          const box = root.querySelector("#tipo");
+          const msg = root.querySelector("#msg");
+          [...box.children].forEach(b => {
+            b.onclick = () => {
+              [...box.children].forEach(x => x.classList.toggle("on", x === b));
+              msg.textContent = b.textContent.trim() === "Delivery"
+                ? "Delivery: taxa aparece conforme o bairro."
+                : "Retirada na Av. Guanabara, 2219 — sem taxa.";
+            };
+          });
+        }
+      },
+      {
+        title: "Pagamento",
+        caption: "PIX online (Mercado Pago) ou pagar na hora — dinheiro, cartão ou Pix presencial, com troco.",
+        html: `
+          <h1>Pagamento</h1>
+          <p class="sub">Como deseja pagar?</p>
+          <div class="choice" id="pag">
+            <button type="button" class="on">PIX agora</button>
+            <button type="button">Na hora</button>
+          </div>
+          <p class="ok">Se for dinheiro: informa a nota → sistema calcula o troco.</p>
+        `,
+        bind(root) {
+          const box = root.querySelector("#pag");
+          [...box.children].forEach(b => {
+            b.onclick = () => [...box.children].forEach(x => x.classList.toggle("on", x === b));
+          });
+        }
+      },
+      {
+        title: "Admin",
+        caption: "Equipe aceita ou recusa. PIX pago + recusa = estorno automático.",
+        html: `
+          <h1>Operação do dia</h1>
+          <p class="sub">Painel · 14h–00h</p>
+          <div class="admin-row"><strong>#048</strong> · Ana · R$ 42,00<br><span class="badge">Aguardando</span></div>
+          <div class="admin-row"><strong>#047</strong> · Lucas · R$ 28,00<br><span class="badge">Preparando</span></div>
+          <button class="go" type="button">✓ Aceitar pedido #048</button>
+          <p class="ok" id="msg"></p>
+        `,
+        bind(root) {
+          root.querySelector(".go").onclick = () => {
+            root.querySelector("#msg").textContent = "Pedido aceito → vai para preparo do açaí.";
+          };
+        }
+      },
+      {
+        title: "Motoboy",
+        caption: "Em delivery, o admin envia ao motoboy: WhatsApp abre com itens, endereço e troco.",
+        html: `
+          <h1>WhatsApp motoboy</h1>
+          <p class="sub">Mensagem pronta</p>
+          <div style="background:#f0f7f4;border-radius:12px;padding:12px;font-size:0.82rem;line-height:1.45;white-space:pre-wrap;">*DELIVERY - Pedido #048*
+Cliente: Ana
+1x Açaí 700ml · 1x Café gelado
+Total: R$ 42,00
+Paga com: R$ 50,00
+*TROCO A DEVOLVER:* R$ 8,00
+Endereço: Rua das Flores, 120</div>
+          <button class="go" type="button">Abrir WhatsApp (simulado)</button>
+          <p class="ok" id="msg"></p>
+        `,
+        bind(root) {
+          root.querySelector(".go").onclick = () => {
+            root.querySelector("#msg").textContent = "No sistema real abre o wa.me com a mensagem.";
+          };
+        }
+      },
+      {
+        title: "Gaveta",
+        caption: "Fecha o dia: histórico do cliente, impressão e Excel profissional.",
+        html: `
+          <h1>Gaveta do dia</h1>
+          <p class="sub">26/07/2026 · 34 pedidos · R$ 1.860,00</p>
+          <div class="admin-row">Nome, telefone, endereço (se delivery)</div>
+          <div class="admin-row">Itens · pagamento · troco · total</div>
+          <button class="go" type="button">Baixar Excel</button>
+          <p class="ok" id="msg"></p>
+        `,
+        bind(root) {
+          root.querySelector(".go").onclick = () => {
+            root.querySelector("#msg").textContent = "Arquivo .xlsx formatado — não fica preso só no site.";
+          };
+        }
+      }
+    ];
+
+    let i = 0;
+    const screen = document.getElementById("screen");
+    const caption = document.getElementById("caption");
+    const prev = document.getElementById("prev");
+    const next = document.getElementById("next");
+
+    function render() {
+      const s = steps[i];
+      caption.innerHTML = `<strong>Legenda · Etapa ${i + 1}/${steps.length} — ${s.title}</strong>${s.caption}`;
+      screen.innerHTML = s.html;
+      if (s.bind) s.bind(screen);
+      prev.disabled = i === 0;
+      next.textContent = i === steps.length - 1 ? "Reiniciar" : "Próximo →";
+    }
+
+    prev.onclick = () => { if (i > 0) { i -= 1; render(); } };
+    next.onclick = () => {
+      if (i >= steps.length - 1) i = 0;
+      else i += 1;
+      render();
+    };
+    render();
+  </script>
+</body>
+</html>
