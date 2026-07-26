@@ -279,17 +279,6 @@ main,
   gap: 0.65rem;
   margin-top: 1rem;
 }
-.demo-url {
-  margin: 0.85rem 0 0;
-  font-size: 0.9rem;
-  color: var(--muted);
-}
-.demo-url a {
-  color: var(--teal-deep);
-  font-weight: 600;
-  word-break: break-all;
-}
-
 .demo-frame {
   margin-top: 1rem;
   border-radius: 24px;
