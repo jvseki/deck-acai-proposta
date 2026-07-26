@@ -2,8 +2,10 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
   <meta name="theme-color" content="#0f3d37" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="format-detection" content="telephone=no" />
   <meta name="description" content="Proposta comercial — Cardápio digital Deck Açaí & Café. Orçamento, funcionamento e demo. JVSEKI." />
   <title>Proposta · Deck Açaí & Café — JVSEKI</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -21,7 +23,7 @@
 
   <header class="top">
     <a class="brand" href="#topo">Deck Açaí <em>Proposta</em></a>
-    <nav>
+    <nav class="nav-desktop">
       <a href="#orcamento">Orçamento</a>
       <a href="#como-funciona">Como funciona</a>
       <a href="#demo">Demo</a>
@@ -29,7 +31,15 @@
       <a href="https://deck-acai-proposta.vercel.app/demo" target="_blank" rel="noopener">Abrir demo</a>
       <a class="wa" href="https://wa.me/5518997640335?text=Oi%20Jo%C3%A3o%2C%20vi%20a%20proposta%20do%20Deck%20A%C3%A7a%C3%AD" target="_blank" rel="noopener">WhatsApp</a>
     </nav>
+    <a class="wa wa-mobile" href="https://wa.me/5518997640335?text=Oi%20Jo%C3%A3o%2C%20vi%20a%20proposta%20do%20Deck%20A%C3%A7a%C3%AD" target="_blank" rel="noopener">WA</a>
   </header>
+  <nav class="nav-mobile" aria-label="Menu mobile">
+    <a href="#orcamento">Orçamento</a>
+    <a href="#como-funciona">Fluxo</a>
+    <a href="#demo">Demo</a>
+    <a href="#hospedar">Infra</a>
+    <a href="https://deck-acai-proposta.vercel.app/demo" target="_blank" rel="noopener">Abrir demo</a>
+  </nav>
 
   <main id="topo">
     <section class="hero">
@@ -96,37 +106,39 @@
         <h2>Orçamento</h2>
         <p>Valores no mesmo modelo dos outros projetos. Servidor e domínio ficam na conta da empresa; a JVSEKI cuida da estrutura e da manutenção do sistema.</p>
       </div>
-      <table class="price-table">
-        <thead>
-          <tr>
-            <th>Item</th>
-            <th>O que inclui</th>
-            <th>Valor</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Desenvolvimento</td>
-            <td>Sistema completo entregue (cardápio, pedidos, PIX, admin, gaveta)</td>
-            <td>R$ 2.500 <span class="hint">(único)</span></td>
-          </tr>
-          <tr>
-            <td>Servidor + domínio</td>
-            <td>VPS Hostinger + domínio — pago e em nome da empresa</td>
-            <td>~R$ 100/mês + domínio/ano</td>
-          </tr>
-          <tr>
-            <td>Manutenção JVSEKI</td>
-            <td>Suporte, bugs, estabilidade do sistema (não inclui remodelação)</td>
-            <td>R$ 200/mês</td>
-          </tr>
-          <tr>
-            <td>Função / remodelação nova</td>
-            <td>Layout novo, cartão online, módulo extra, etc.</td>
-            <td>Orçamento à parte</td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="price-table-wrap">
+        <table class="price-table">
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>O que inclui</th>
+              <th>Valor</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Desenvolvimento</td>
+              <td>Sistema completo entregue (cardápio, pedidos, PIX, admin, gaveta)</td>
+              <td>R$ 2.500 <span class="hint">(único)</span></td>
+            </tr>
+            <tr>
+              <td>Servidor + domínio</td>
+              <td>VPS Hostinger + domínio — pago e em nome da empresa</td>
+              <td>~R$ 100/mês + domínio/ano</td>
+            </tr>
+            <tr>
+              <td>Manutenção JVSEKI</td>
+              <td>Suporte, bugs, estabilidade do sistema (não inclui remodelação)</td>
+              <td>R$ 200/mês</td>
+            </tr>
+            <tr>
+              <td>Função / remodelação nova</td>
+              <td>Layout novo, cartão online, módulo extra, etc.</td>
+              <td>Orçamento à parte</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
       <div class="cards" style="margin-top:1.2rem;">
         <article class="card">
           <h3>Quem paga o quê</h3>
@@ -169,7 +181,7 @@
         </div>
       </div>
       <div class="demo-frame demo-frame-lg">
-        <iframe src="demo/index.html" title="Demo Deck Açaí — site mockado" loading="lazy"></iframe>
+        <iframe src="demo/index.html" title="Demo Deck Açaí — site mockado" loading="lazy" scrolling="yes" allowfullscreen></iframe>
       </div>
     </section>
 
