@@ -45,7 +45,10 @@ function renderCart() {
   const btn = document.getElementById("btnIrLogin");
   const items = Object.values(cart);
 
-  if (count) count.textContent = items.reduce((s, i) => s + i.qtd, 0);
+  const n = items.reduce((s, i) => s + i.qtd, 0);
+  if (count) count.textContent = n;
+  const countNav = document.getElementById("cartCountNav");
+  if (countNav) countNav.textContent = n;
   if (sub) sub.textContent = formatarPreco(subtotal());
   if (btn) btn.disabled = items.length === 0;
 
@@ -149,7 +152,7 @@ function goToStep(n) {
 }
 
 /* Cardápio */
-document.querySelectorAll(".menu-card").forEach((btn) => {
+document.querySelectorAll(".product").forEach((btn) => {
   btn.addEventListener("click", () => {
     const id = btn.dataset.id;
     const nome = btn.dataset.nome;

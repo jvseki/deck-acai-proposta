@@ -22,19 +22,23 @@
     <a href="../index.html">← Voltar à proposta</a>
   </div>
 
-  <header class="store-top">
-    <div class="store-brand">
+  <header class="store-nav">
+    <a class="store-logo" href="#topo">
       <strong>DECK</strong>
       <span>AÇAÍ & CAFÉ</span>
-    </div>
-    <p class="store-tag">Aqui o seu açaí, é do seu jeito!</p>
+    </a>
+    <nav>
+      <a href="#topo">Cardápio</a>
+      <a href="#topo">Delivery</a>
+      <span class="store-hours">14h–00h · Andradina</span>
+    </nav>
+    <div class="nav-cart" id="navCartBadge">Carrinho <em id="cartCountNav">0</em></div>
   </header>
 
-  <div class="demo-shell" id="demoShell">
+  <div class="demo-controls" id="demoShell">
     <div class="demo-progress" aria-hidden="true">
       <div class="demo-progress-bar" id="demoProgressBar"></div>
     </div>
-
     <div class="demo-steps" role="tablist" aria-label="Etapas da demo">
       <button type="button" class="demo-step active" data-step="0">1. Cardápio</button>
       <button type="button" class="demo-step" data-step="1">2. Google</button>
@@ -44,240 +48,275 @@
       <button type="button" class="demo-step" data-step="5">6. Motoboy</button>
       <button type="button" class="demo-step" data-step="6">7. Infra</button>
     </div>
-
     <div class="demo-caption">
-      <strong>Legenda</strong>
+      <strong>Legenda da etapa</strong>
       <p id="demoCaptionText">Toque nos açaís para montar o carrinho — como no site real.</p>
     </div>
+  </div>
 
-    <!-- 0 CARDÁPIO -->
+  <main id="topo">
+    <!-- 0 CARDÁPIO — parece o site -->
     <div class="demo-panel active" data-panel="0">
-      <div class="site-frame">
-        <div class="site-bar">
-          <span>deckacaiecafe.com.br</span>
-          <em>cardápio</em>
+      <section class="store-hero">
+        <div class="store-hero-copy">
+          <p class="eyebrow">Andradina · SP</p>
+          <h1>DECK</h1>
+          <p class="hero-sub">AÇAÍ & CAFÉ</p>
+          <p class="hero-lead">Aqui o seu açaí, é do seu jeito!</p>
+          <p class="hero-meta">Av. Guanabara, 2219 · Seg a seg · 14h às 00h</p>
         </div>
-        <div class="site-body">
-          <div class="site-hero-mini">
-            <h1>Cardápio</h1>
-            <p>Av. Guanabara, 2219 · Andradina · 14h às 00h</p>
-          </div>
+      </section>
+
+      <section class="store-menu">
+        <div class="store-menu-head">
+          <h2>Cardápio</h2>
+          <p>Escolha e monte o pedido — demo do canal próprio.</p>
+        </div>
+
+        <div class="store-layout">
           <div class="menu-grid" id="menuMock">
-            <button type="button" class="menu-card" data-id="acai500" data-nome="Açaí 500ml" data-preco="22">
-              <span class="menu-name">Açaí 500ml</span>
-              <span class="menu-desc">Base cremosa + 2 adicionais</span>
-              <span class="menu-price">R$ 22,00 · <em>+ adicionar</em></span>
+            <button type="button" class="product" data-id="acai500" data-nome="Açaí 500ml" data-preco="22">
+              <span class="product-img" style="background-image:url('../images/hero-acai.jpg')"></span>
+              <span class="product-body">
+                <span class="product-name">Açaí 500ml</span>
+                <span class="product-desc">Base cremosa + 2 adicionais</span>
+                <span class="product-price">R$ 22,00</span>
+                <span class="product-add">+ Adicionar</span>
+              </span>
             </button>
-            <button type="button" class="menu-card" data-id="acai700" data-nome="Açaí 700ml" data-preco="28">
-              <span class="menu-name">Açaí 700ml</span>
-              <span class="menu-desc">Do seu jeito · 3 adicionais</span>
-              <span class="menu-price">R$ 28,00 · <em>+ adicionar</em></span>
+            <button type="button" class="product" data-id="acai700" data-nome="Açaí 700ml" data-preco="28">
+              <span class="product-img" style="background-image:url('https://images.unsplash.com/photo-1553530666-ba11a7da3888?auto=format&fit=crop&w=800&q=80')"></span>
+              <span class="product-body">
+                <span class="product-name">Açaí 700ml</span>
+                <span class="product-desc">Do seu jeito · 3 adicionais</span>
+                <span class="product-price">R$ 28,00</span>
+                <span class="product-add">+ Adicionar</span>
+              </span>
             </button>
-            <button type="button" class="menu-card" data-id="barcakids" data-nome="Barca Deck Kids" data-preco="36">
-              <span class="menu-name">Barca Deck Kids</span>
-              <span class="menu-desc">Porção compartilhada</span>
-              <span class="menu-price">R$ 36,00 · <em>+ adicionar</em></span>
+            <button type="button" class="product" data-id="barcakids" data-nome="Barca Deck Kids" data-preco="36">
+              <span class="product-img" style="background-image:url('https://images.pexels.com/photos/1099680/pexels-photo-1099680.jpeg?auto=compress&cs=tinysrgb&w=800')"></span>
+              <span class="product-body">
+                <span class="product-name">Barca Deck Kids</span>
+                <span class="product-desc">Porção compartilhada</span>
+                <span class="product-price">R$ 36,00</span>
+                <span class="product-add">+ Adicionar</span>
+              </span>
             </button>
-            <button type="button" class="menu-card" data-id="cafe" data-nome="Café gelado" data-preco="14">
-              <span class="menu-name">Café gelado</span>
-              <span class="menu-desc">Leite + espresso gelado</span>
-              <span class="menu-price">R$ 14,00 · <em>+ adicionar</em></span>
+            <button type="button" class="product" data-id="cafe" data-nome="Café gelado" data-preco="14">
+              <span class="product-img" style="background-image:url('https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=800&q=80')"></span>
+              <span class="product-body">
+                <span class="product-name">Café gelado</span>
+                <span class="product-desc">Leite + espresso gelado</span>
+                <span class="product-price">R$ 14,00</span>
+                <span class="product-add">+ Adicionar</span>
+              </span>
             </button>
           </div>
+
           <aside class="cart-panel">
-            <p class="cart-label">Carrinho (<span id="cartCount">0</span>)</p>
+            <p class="cart-label">Seu pedido (<span id="cartCount">0</span>)</p>
             <ul class="cart-list" id="cartList">
               <li class="cart-empty">Nenhum item ainda — toque no cardápio.</li>
             </ul>
             <p class="cart-total">Subtotal <strong id="cartSubtotal">R$ 0,00</strong></p>
             <button type="button" class="btn primary block" id="btnIrLogin" disabled>Continuar · login Google</button>
+            <p class="cart-hint">Próximo passo: entrar com Google (simulado).</p>
           </aside>
         </div>
-      </div>
+      </section>
     </div>
 
     <!-- 1 GOOGLE -->
     <div class="demo-panel" data-panel="1">
-      <div class="mock-phone">
-        <div class="mock-phone-bar"><span>accounts.google.com</span></div>
-        <div class="mock-screen mock-login" id="mockLogin">
-          <div class="google-card">
-            <div class="google-logo" aria-hidden="true">
-              <span class="g-blue">G</span><span class="g-red">o</span><span class="g-yellow">o</span><span class="g-blue">g</span><span class="g-green">l</span><span class="g-red">e</span>
+      <div class="stage">
+        <div class="mock-phone">
+          <div class="mock-phone-bar"><span>accounts.google.com</span></div>
+          <div class="mock-screen mock-login" id="mockLogin">
+            <div class="google-card">
+              <div class="google-logo" aria-hidden="true">
+                <span class="g-blue">G</span><span class="g-red">o</span><span class="g-yellow">o</span><span class="g-blue">g</span><span class="g-green">l</span><span class="g-red">e</span>
+              </div>
+              <h2>Fazer login</h2>
+              <p class="mock-sub">para continuar em <strong>Deck Açaí & Café</strong></p>
+              <div class="cart-mini" id="cartMiniLogin"></div>
+              <button type="button" class="google-btn" id="btnGoogleMock">
+                <span class="google-g" aria-hidden="true">G</span>
+                Continuar com Google
+              </button>
+              <p class="mock-hint">Demo: não abre conta real — só simula o login do sistema.</p>
             </div>
-            <h2>Fazer login</h2>
-            <p class="mock-sub">para continuar em <strong>Deck Açaí & Café</strong></p>
-            <div class="cart-mini" id="cartMiniLogin"></div>
-            <button type="button" class="google-btn" id="btnGoogleMock">
-              <span class="google-g" aria-hidden="true">G</span>
-              Continuar com Google
-            </button>
-            <p class="mock-hint">Demo: não abre conta real — só simula o login do sistema.</p>
           </div>
-        </div>
-        <div class="mock-screen mock-login-ok" id="mockLoginOk" hidden>
-          <div class="avatar-mock">AS</div>
-          <p class="login-ok-name">Ana Silva</p>
-          <p class="login-ok-mail">ana.silva@gmail.com</p>
-          <p class="login-ok-badge">Sessão Google simulada ✓</p>
-          <button type="button" class="btn primary block" data-goto="2">Informar entrega</button>
+          <div class="mock-screen mock-login-ok" id="mockLoginOk" hidden>
+            <div class="avatar-mock">AS</div>
+            <p class="login-ok-name">Ana Silva</p>
+            <p class="login-ok-mail">ana.silva@gmail.com</p>
+            <p class="login-ok-badge">Sessão Google simulada ✓</p>
+            <button type="button" class="btn primary block" data-goto="2">Informar entrega</button>
+          </div>
         </div>
       </div>
     </div>
 
     <!-- 2 ENTREGA -->
     <div class="demo-panel" data-panel="2">
-      <div class="mock-phone">
-        <div class="mock-phone-bar"><span>Checkout · Deck Açaí</span></div>
-        <div class="mock-screen">
-          <p class="mock-title">Como vai receber?</p>
-          <div class="choice-row" id="tipoEntrega">
-            <button type="button" class="choice-btn active" data-tipo="entrega">
-              Delivery
-              <small>+ R$ 6,00 taxa</small>
-            </button>
-            <button type="button" class="choice-btn" data-tipo="retirada">
-              Retirar no Deck
-              <small>Av. Guanabara, 2219</small>
-            </button>
+      <div class="stage">
+        <div class="mock-phone">
+          <div class="mock-phone-bar"><span>Checkout · Deck Açaí</span></div>
+          <div class="mock-screen">
+            <p class="mock-title">Como vai receber?</p>
+            <div class="choice-row" id="tipoEntrega">
+              <button type="button" class="choice-btn active" data-tipo="entrega">
+                Delivery
+                <small>+ R$ 6,00 taxa</small>
+              </button>
+              <button type="button" class="choice-btn" data-tipo="retirada">
+                Retirar no Deck
+                <small>Av. Guanabara, 2219</small>
+              </button>
+            </div>
+            <div class="form-mock" id="enderecoBox">
+              <label>Rua <input type="text" value="Rua das Palmeiras" readonly></label>
+              <label>Número <input type="text" value="450" readonly></label>
+              <label>Bairro <input type="text" value="Centro" readonly></label>
+              <label>Referência <input type="text" value="Casa com muro verde" readonly></label>
+              <label>Telefone <input type="text" value="(18) 99755-0000" readonly></label>
+            </div>
+            <p class="mock-hint" id="entregaHint">No sistema real o endereço fica salvo na conta Google.</p>
+            <p class="cart-total">Total estimado <strong id="totalEntrega">R$ 0,00</strong></p>
+            <button type="button" class="btn primary block" data-goto="3">Ir para pagamento</button>
           </div>
-          <div class="form-mock" id="enderecoBox">
-            <label>Rua <input type="text" value="Rua das Palmeiras" readonly></label>
-            <label>Número <input type="text" value="450" readonly></label>
-            <label>Bairro <input type="text" value="Centro" readonly></label>
-            <label>Referência <input type="text" value="Casa com muro verde" readonly></label>
-            <label>Telefone <input type="text" value="(18) 99755-0000" readonly></label>
-          </div>
-          <p class="mock-hint" id="entregaHint">No sistema real o endereço fica salvo na conta Google.</p>
-          <p class="cart-total">Total estimado <strong id="totalEntrega">R$ 0,00</strong></p>
-          <button type="button" class="btn primary block" data-goto="3">Ir para pagamento</button>
         </div>
       </div>
     </div>
 
     <!-- 3 PIX -->
     <div class="demo-panel" data-panel="3">
-      <div class="mock-phone">
-        <div class="mock-phone-bar"><span>Pagamento · Pix Mercado Pago</span></div>
-        <div class="mock-screen" id="pixAntes">
-          <p class="mock-title">Pagar agora</p>
-          <p class="mock-sub">Pix online — o pedido só entra na fila depois de confirmado.</p>
-          <label class="form-line">
-            CPF do pagador
-            <input type="text" value="000.000.000-00" readonly>
-          </label>
-          <label class="check-mock">
-            <input type="checkbox" id="confirmarPix">
-            Confirmo e irei pagar com Pix agora
-          </label>
-          <p class="cart-total">Cobrar <strong id="totalPix">R$ 0,00</strong></p>
-          <button type="button" class="btn primary block" id="btnGerarPix" disabled>Gerar Pix e pagar</button>
-          <p class="mock-hint">No real: API cria cobrança, QR e confirma por webhook.</p>
-        </div>
-        <div class="mock-screen" id="pixDepois" hidden>
-          <p class="mock-title">QR Code Pix</p>
-          <div class="qr-mock" aria-hidden="true"><div class="qr-pattern"></div></div>
-          <p class="pix-copia">00020126...DECKACAI...6304ABCD</p>
-          <button type="button" class="btn ghost block" id="btnCopiarPix">Copiar código Pix</button>
-          <button type="button" class="btn primary block" id="btnSimularPago">Simular pagamento aprovado</button>
-          <p class="mock-hint">Legenda: após o Pix, o pedido aparece no painel da loja.</p>
+      <div class="stage">
+        <div class="mock-phone">
+          <div class="mock-phone-bar"><span>Pagamento · Pix Mercado Pago</span></div>
+          <div class="mock-screen" id="pixAntes">
+            <p class="mock-title">Pagar agora</p>
+            <p class="mock-sub">Pix online — o pedido só entra na fila depois de confirmado.</p>
+            <label class="form-line">
+              CPF do pagador
+              <input type="text" value="000.000.000-00" readonly>
+            </label>
+            <label class="check-mock">
+              <input type="checkbox" id="confirmarPix">
+              Confirmo e irei pagar com Pix agora
+            </label>
+            <p class="cart-total">Cobrar <strong id="totalPix">R$ 0,00</strong></p>
+            <button type="button" class="btn primary block" id="btnGerarPix" disabled>Gerar Pix e pagar</button>
+            <p class="mock-hint">No real: API cria cobrança, QR e confirma por webhook.</p>
+          </div>
+          <div class="mock-screen" id="pixDepois" hidden>
+            <p class="mock-title">QR Code Pix</p>
+            <div class="qr-mock" aria-hidden="true"><div class="qr-pattern"></div></div>
+            <p class="pix-copia">00020126...DECKACAI...6304ABCD</p>
+            <button type="button" class="btn ghost block" id="btnCopiarPix">Copiar código Pix</button>
+            <button type="button" class="btn primary block" id="btnSimularPago">Simular pagamento aprovado</button>
+            <p class="mock-hint">Após o Pix, o pedido aparece no painel da loja.</p>
+          </div>
         </div>
       </div>
     </div>
 
     <!-- 4 ADMIN -->
     <div class="demo-panel" data-panel="4">
-      <div class="admin-frame">
-        <div class="admin-bar">
-          <span>Painel admin · Deck Açaí</span>
-          <em class="live">fila ao vivo</em>
-        </div>
-        <div class="admin-body">
-          <article class="admin-card">
-            <header>
-              <strong>Pedido #<span id="adminNum">048</span></strong>
-              <span class="status-pill" id="adminStatus">Aguardando aceite</span>
-            </header>
-            <p id="adminCliente">Ana Silva · (18) 99755-0000</p>
-            <p id="adminEndereco">Rua das Palmeiras, 450 — Centro</p>
-            <p id="adminItens">—</p>
-            <p class="admin-pay">Pix online · pagamento confirmado</p>
-            <div class="admin-actions">
-              <button type="button" class="btn primary sm" id="btnAceitar">Aceitar</button>
-              <button type="button" class="btn ghost sm" id="btnPreparar" disabled>Em preparo</button>
-              <button type="button" class="btn wa sm" id="btnMotoboy" disabled>Enviar p/ motoboy</button>
-            </div>
-            <p class="admin-feedback" id="adminFeedback" hidden></p>
-          </article>
+      <div class="stage stage-wide">
+        <div class="admin-frame">
+          <div class="admin-bar">
+            <span>Painel admin · Deck Açaí</span>
+            <em class="live">fila ao vivo</em>
+          </div>
+          <div class="admin-body">
+            <article class="admin-card">
+              <header>
+                <strong>Pedido #<span id="adminNum">048</span></strong>
+                <span class="status-pill" id="adminStatus">Aguardando aceite</span>
+              </header>
+              <p id="adminCliente">Ana Silva · (18) 99755-0000</p>
+              <p id="adminEndereco">Rua das Palmeiras, 450 — Centro</p>
+              <p id="adminItens">—</p>
+              <p class="admin-pay">Pix online · pagamento confirmado</p>
+              <div class="admin-actions">
+                <button type="button" class="btn primary sm" id="btnAceitar">Aceitar</button>
+                <button type="button" class="btn ghost sm" id="btnPreparar" disabled>Em preparo</button>
+                <button type="button" class="btn wa sm" id="btnMotoboy" disabled>Enviar p/ motoboy</button>
+              </div>
+              <p class="admin-feedback" id="adminFeedback" hidden></p>
+            </article>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- 5 WHATSAPP MOTOBOY -->
+    <!-- 5 WHATSAPP -->
     <div class="demo-panel" data-panel="5">
-      <div class="wa-frame">
-        <div class="wa-header">
-          <div class="wa-avatar">M</div>
-          <div>
-            <strong>Motoboy — Deck Açaí</strong>
-            <small>mensagem automática do painel</small>
+      <div class="stage">
+        <div class="wa-frame">
+          <div class="wa-header">
+            <div class="wa-avatar">M</div>
+            <div>
+              <strong>Motoboy — Deck Açaí</strong>
+              <small>mensagem automática do painel</small>
+            </div>
           </div>
-        </div>
-        <div class="wa-body">
-          <div class="wa-day">Hoje</div>
-          <div class="wa-bubble">
-            <pre id="waMessage"></pre>
-            <span class="wa-time">agora ✓✓</span>
+          <div class="wa-body">
+            <div class="wa-day">Hoje</div>
+            <div class="wa-bubble">
+              <pre id="waMessage"></pre>
+              <span class="wa-time">agora ✓✓</span>
+            </div>
           </div>
+          <p class="wa-caption">
+            <strong>Legenda:</strong> o que o motoboy recebe no WhatsApp —
+            cliente, telefone, itens, total, Pix pago e endereço.
+          </p>
         </div>
-        <p class="wa-caption">
-          <strong>Legenda:</strong> exatamente o que o motoboy recebe no WhatsApp —
-          cliente, telefone, itens, total, Pix pago e endereço completo.
-        </p>
       </div>
     </div>
 
     <!-- 6 INFRA -->
     <div class="demo-panel" data-panel="6">
-      <div class="infra-panel">
-        <h2>Como o sistema fica no ar</h2>
-        <p class="infra-lead">Mesma infraestrutura do Vila Mouran — para o Deck entender o que roda onde.</p>
-
-        <div class="infra-flow">
-          <div class="infra-box">
-            <strong>1. Domínio</strong>
-            <span>deckacaiecafe.com.br<br />DNS → IP do VPS · HTTPS</span>
+      <div class="stage stage-wide">
+        <div class="infra-panel">
+          <h2>Como o sistema fica no ar</h2>
+          <p class="infra-lead">Mesma infraestrutura do Vila Mouran — para o Deck entender o que roda onde.</p>
+          <div class="infra-flow">
+            <div class="infra-box">
+              <strong>1. Domínio</strong>
+              <span>deckacaiecafe.com.br<br />DNS → IP do VPS · HTTPS</span>
+            </div>
+            <div class="infra-box accent">
+              <strong>2. VPS da empresa</strong>
+              <span>Site + API + banco<br />Hostinger KVM · em nome do Deck</span>
+            </div>
+            <div class="infra-box">
+              <strong>3. Integrações</strong>
+              <span>Google Login<br />Mercado Pago (Pix)<br />WhatsApp motoboy</span>
+            </div>
           </div>
-          <div class="infra-box accent">
-            <strong>2. VPS da empresa</strong>
-            <span>Site + API + banco<br />Hostinger KVM · em nome do Deck</span>
+          <div class="infra-split">
+            <div>
+              <h3>JVSEKI</h3>
+              <ul>
+                <li>Monta o sistema e o painel</li>
+                <li>Configura Pix, Google e deploy</li>
+                <li>Manutenção mensal do software</li>
+              </ul>
+            </div>
+            <div>
+              <h3>Deck Açaí</h3>
+              <ul>
+                <li>Paga servidor e domínio</li>
+                <li>É dona dos dados e da operação</li>
+                <li>Conta Mercado Pago da loja</li>
+              </ul>
+            </div>
           </div>
-          <div class="infra-box">
-            <strong>3. Integrações</strong>
-            <span>Google Login<br />Mercado Pago (Pix)<br />WhatsApp motoboy</span>
-          </div>
+          <p class="infra-foot">Demo de apresentação. O sistema real sobe no VPS da empresa — igual ao Vila Mouran.</p>
         </div>
-
-        <div class="infra-split">
-          <div>
-            <h3>JVSEKI</h3>
-            <ul>
-              <li>Monta o sistema e o painel</li>
-              <li>Configura Pix, Google e deploy</li>
-              <li>Manutenção mensal do software</li>
-            </ul>
-          </div>
-          <div>
-            <h3>Deck Açaí</h3>
-            <ul>
-              <li>Paga servidor e domínio</li>
-              <li>É dona dos dados e da operação</li>
-              <li>Conta Mercado Pago da loja</li>
-            </ul>
-          </div>
-        </div>
-
-        <p class="infra-foot">Esta demo é só a apresentação. O sistema real sobe no VPS da empresa — igual ao Vila Mouran.</p>
       </div>
     </div>
 
@@ -286,7 +325,12 @@
       <button type="button" class="btn ghost" id="demoRestart" hidden>Recomeçar demo</button>
       <button type="button" class="btn primary" id="demoNext">Próximo passo</button>
     </div>
-  </div>
+  </main>
+
+  <footer class="store-foot">
+    <p><strong>DECK AÇAÍ & CAFÉ</strong> · demo JVSEKI</p>
+    <p>Av. Guanabara, 2219 · Andradina-SP · (18) 99755-7948</p>
+  </footer>
 
   <script src="script.js"></script>
 </body>
